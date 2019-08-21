@@ -31,6 +31,7 @@
     "@antv/g": "~3.5.0-beta.1"
   },
   "devDependencies": {
+    "@antv/torch": "~1.0.5",
     "chai": "~4.1.2",
     "husky": "^3.0.4",
     "lint-staged": "^9.2.3",
