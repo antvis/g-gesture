@@ -43,7 +43,7 @@ export class Press extends Gesture {
     this.touchStartY = y;
 
     this.pressTimeout = window.setTimeout(() => {
-      this.emit({ x, y });
+      this.emit({ x, y, event: ev });
     }, TIME);
   }
 

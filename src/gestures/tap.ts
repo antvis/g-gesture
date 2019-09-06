@@ -18,7 +18,7 @@ export class Tap extends Gesture {
 
   protected onTouchCancel(ev) {}
 
-  protected onTouchEnd(ev) {
+  protected onTouchEnd(ev: Event) {
     const { x, y } = ev;
 
     if (
@@ -26,7 +26,7 @@ export class Tap extends Gesture {
       y - this.touchStartY < DISTANCE &&
       clock.now() - this.touchStartTime < TIME
     ) {
-      this.emit({ x, y });
+      this.emit({ x, y, event: ev });
     }
   }
 

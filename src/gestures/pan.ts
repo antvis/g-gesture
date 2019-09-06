@@ -14,7 +14,7 @@ export class Pan extends Gesture {
 
   protected onTouchEnd(ev) {}
 
-  protected onTouchMove(ev) {
+  protected onTouchMove(ev: Event) {
     const { x, y } = ev;
 
     const deltaX = x - this.preX;
@@ -23,7 +23,7 @@ export class Pan extends Gesture {
     this.preX = x;
     this.preY = y;
 
-    this.emit({ x, y, deltaX, deltaY });
+    this.emit({ x, y, deltaX, deltaY, event: ev });
   }
 
   protected onTouchStart(ev) {
