@@ -5,7 +5,7 @@ import { GM } from '../gm';
  * 事件数据定义
  */
 export interface GestureEvent {
-  // readonly event: Event;
+  readonly event: Event;
   readonly x: number;
   readonly y: number;
 

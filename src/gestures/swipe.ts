@@ -25,7 +25,7 @@ export class Swipe extends Gesture {
 
   protected onTouchCancel(ev) {}
 
-  protected onTouchEnd(ev) {
+  protected onTouchEnd(ev: Event) {
     const speedX = this.speedX;
     const speedY = this.speedY;
 
@@ -33,7 +33,7 @@ export class Swipe extends Gesture {
       const { x, y } = ev;
 
       // 抛出事件
-      this.emit({ x, y, speedX, speedY });
+      this.emit({ x, y, speedX, speedY, event: ev });
     }
   }
 

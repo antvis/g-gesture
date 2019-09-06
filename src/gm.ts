@@ -61,12 +61,21 @@ export class GM extends EE {
     this.element.on('touchstart', this.onTouchStart);
   }
 
+  private preventEvent(ev: TouchEvent) {
+    const { type } = ev;
+    const prevents = this.options.prevents || [];
+
+    if (prevents.includes(type)) {
+      ev.preventDefault();
+    }
+  }
+
   /**
    * touchstart 触发
    * @param ev
    */
   private onTouchStart = (ev: Event) => {
-    // ev.event.preventDefault();
+    this.preventEvent(ev.event);
 
     this.element.on('touchmove', this.onTouchMove);
     this.element.on('touchend', this.onTouchEnd);
@@ -81,7 +90,7 @@ export class GM extends EE {
    * @param ev
    */
   private onTouchMove = (ev: Event) => {
-    // ev.event.preventDefault();
+    this.preventEvent(ev.event);
 
     this.emit('touchmove', ev);
     this.doGestures(ev);
@@ -92,7 +101,7 @@ export class GM extends EE {
    * @param ev
    */
   private onTouchEnd = (ev: Event) => {
-    // ev.event.preventDefault();
+    this.preventEvent(ev.event);
 
     this.emit('touchend', ev);
 
@@ -108,7 +117,7 @@ export class GM extends EE {
    * @param ev
    */
   private onTouchCancel = (ev: Event) => {
-    // ev.event.preventDefault();
+    this.preventEvent(ev.event);
 
     this.emit('touchcancel', ev);
 
