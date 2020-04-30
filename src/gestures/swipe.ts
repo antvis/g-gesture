@@ -2,7 +2,7 @@
 划动
 move 和 end 相差小于 100 ms
  */
-import { Event } from '@antv/g';
+import { Event } from '@antv/g-base';
 import { clock } from '../utils/clock';
 import { Gesture } from './gesture';
 
@@ -23,7 +23,7 @@ export class Swipe extends Gesture {
   private preX: number = 0;
   private preY: number = 0;
 
-  protected onTouchCancel(ev) {}
+  protected onTouchCancel(ev: Event) {}
 
   protected onTouchEnd(ev: Event) {
     const speedX = this.speedX;
@@ -37,7 +37,7 @@ export class Swipe extends Gesture {
     }
   }
 
-  protected onTouchMove(ev) {
+  protected onTouchMove(ev: Event) {
     const { x, y } = ev;
 
     const ms = clock.now();
@@ -54,7 +54,7 @@ export class Swipe extends Gesture {
     this.latestMoveTime = ms;
   }
 
-  protected onTouchStart(ev) {
+  protected onTouchStart(ev: Event) {
     const { x, y } = ev;
 
     // 初始化
