@@ -1,7 +1,7 @@
 /*
 一次点击，start 和 end 不能超过 2px，时间不超过 300ms
  */
-import { Event } from '@antv/g';
+import { Event } from '@antv/g-base';
 import { clock } from '../utils/clock';
 import { Gesture } from './gesture';
 
@@ -16,7 +16,7 @@ export class Tap extends Gesture {
   private touchStartX: number;
   private touchStartY: number;
 
-  protected onTouchCancel(ev) {}
+  protected onTouchCancel(ev: Event) {}
 
   protected onTouchEnd(ev: Event) {
     const { x, y } = ev;
@@ -30,9 +30,9 @@ export class Tap extends Gesture {
     }
   }
 
-  protected onTouchMove(ev) {}
+  protected onTouchMove(ev: Event) {}
 
-  protected onTouchStart(ev) {
+  protected onTouchStart(ev: Event) {
     const { x, y } = ev;
 
     this.touchStartTime = clock.now();

@@ -1,7 +1,7 @@
 /*
 拖拽
  */
-import { Event } from '@antv/g';
+import { Event } from '@antv/g-base';
 import { Gesture } from './gesture';
 
 export class Pan extends Gesture {
@@ -10,9 +10,9 @@ export class Pan extends Gesture {
   private preX: number;
   private preY: number;
 
-  protected onTouchCancel(ev) {}
+  protected onTouchCancel(ev: Event) {}
 
-  protected onTouchEnd(ev) {}
+  protected onTouchEnd(ev: Event) {}
 
   protected onTouchMove(ev: Event) {
     const { x, y } = ev;
@@ -26,7 +26,7 @@ export class Pan extends Gesture {
     this.emit({ x, y, deltaX, deltaY, event: ev });
   }
 
-  protected onTouchStart(ev) {
+  protected onTouchStart(ev: Event) {
     const { x, y } = ev;
 
     this.preX = x;

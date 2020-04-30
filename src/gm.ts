@@ -1,5 +1,5 @@
 import EE from '@antv/event-emitter';
-import { Element, Event } from '@antv/g';
+import { Event, IElement } from '@antv/g-base';
 import { Gesture, getGesture } from './gestures';
 import { Options } from './interface';
 
@@ -11,7 +11,7 @@ import { Options } from './interface';
  */
 export class GM extends EE {
   // 监听的 G element
-  private element: Element;
+  private element: IElement;
   private options: Options;
 
   // 手势
@@ -21,7 +21,7 @@ export class GM extends EE {
   // private tap: Tap;
   private gestures: Gesture[];
 
-  constructor(element: Element, options: Options = {}) {
+  constructor(element: IElement, options: Options = {}) {
     super();
     this.element = element;
     this.options = options;
@@ -61,7 +61,7 @@ export class GM extends EE {
     this.element.on('touchstart', this.onTouchStart);
   }
 
-  private preventEvent(ev: TouchEvent) {
+  private preventEvent(ev: Event) {
     const { type } = ev;
     const prevents = this.options.prevents || [];
 
@@ -75,7 +75,7 @@ export class GM extends EE {
    * @param ev
    */
   private onTouchStart = (ev: Event) => {
-    this.preventEvent(ev.event);
+    this.preventEvent(ev);
 
     this.element.on('touchmove', this.onTouchMove);
     this.element.on('touchend', this.onTouchEnd);
@@ -90,7 +90,7 @@ export class GM extends EE {
    * @param ev
    */
   private onTouchMove = (ev: Event) => {
-    this.preventEvent(ev.event);
+    this.preventEvent(ev);
 
     this.emit('touchmove', ev);
     this.doGestures(ev);
@@ -101,7 +101,7 @@ export class GM extends EE {
    * @param ev
    */
   private onTouchEnd = (ev: Event) => {
-    this.preventEvent(ev.event);
+    this.preventEvent(ev);
 
     this.emit('touchend', ev);
 
@@ -117,7 +117,7 @@ export class GM extends EE {
    * @param ev
    */
   private onTouchCancel = (ev: Event) => {
-    this.preventEvent(ev.event);
+    this.preventEvent(ev);
 
     this.emit('touchcancel', ev);
 

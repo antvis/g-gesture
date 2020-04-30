@@ -1,5 +1,5 @@
 import EE from '@antv/event-emitter';
-import { Element } from '@antv/g';
+import { IElement } from '@antv/g-base';
 import * as d3Ease from 'd3-ease';
 import { GestureEvent } from '../gestures/gesture';
 import { GM } from '../gm';
@@ -23,7 +23,7 @@ const WHEEL = 'wheel';
  */
 export class Wheel extends EE implements Event {
   // 监听的 G element
-  private element: Element;
+  private element: IElement;
 
   private gm: GM;
 
@@ -33,7 +33,7 @@ export class Wheel extends EE implements Event {
   // 最后一次 move 的时间
   private ms: number;
 
-  constructor(element: Element) {
+  constructor(element: IElement) {
     super();
     this.element = element;
 

@@ -2,7 +2,7 @@
 1. 按住 300ms
 2. move 不超过 10ms
  */
-import { Event } from '@antv/g';
+import { Event } from '@antv/g-base';
 import { clock } from '../utils/clock';
 import { Gesture } from './gesture';
 
@@ -17,15 +17,15 @@ export class Press extends Gesture {
   private touchStartY: number;
   private pressTimeout: number;
 
-  protected onTouchCancel(ev) {
+  protected onTouchCancel(ev: Event) {
     this.clearTimeout();
   }
 
-  protected onTouchEnd(ev) {
+  protected onTouchEnd(ev: Event) {
     this.clearTimeout();
   }
 
-  protected onTouchMove(ev) {
+  protected onTouchMove(ev: Event) {
     const { x, y } = ev;
 
     if (x - this.touchStartX > DISTANCE || y - this.touchStartY > DISTANCE) {
@@ -33,7 +33,7 @@ export class Press extends Gesture {
     }
   }
 
-  protected onTouchStart(ev) {
+  protected onTouchStart(ev: Event) {
     this.clearTimeout();
 
     const { x, y } = ev;

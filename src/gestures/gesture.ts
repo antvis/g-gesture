@@ -1,4 +1,4 @@
-import { Event } from '@antv/g';
+import { Event } from '@antv/g-base';
 import { GM } from '../gm';
 
 /**
