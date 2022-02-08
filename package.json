@@ -1,6 +1,6 @@
 {
   "name": "@antv/g-gesture",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Gesture module for @antv/g.",
   "main": "lib/index.js",
   "module": "esm/index.js",
