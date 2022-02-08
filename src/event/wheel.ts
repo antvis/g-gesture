@@ -56,6 +56,12 @@ export class Wheel extends EE implements Event {
    * @param ev
    */
   private onPan = (ev: GestureEvent) => {
+
+    // pan 时取消掉 swipe 的延时回调
+    if(this.raf){
+      cancelAnimationFrame(this.raf)
+    }
+
     const { deltaX, deltaY } = ev;
 
     const e = this.getWrapperEvent(ev, deltaX, deltaY);
